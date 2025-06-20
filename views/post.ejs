@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wallpapers Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center font-sans p-6 text-gray-200">
+  <div class="max-w-md w-full bg-white bg-opacity-10 rounded-lg shadow-lg p-6 backdrop-blur-sm">
+    <h2 class="text-2xl font-bold mb-4 text-center">Post Details</h2>
+
+    <p class="text-sm text-gray-400 mb-2">Post ID: <%= post.id %></p>
+    <h3 class="text-lg font-semibold mb-2">@<%= post.username %></h3>
+    <h4 class="mb-4"><%= post.caption %></h4>
+    <img src="<%= post.image %>" alt="Uploaded Image" class="w-full rounded-md mb-4" />
+
+    <!-- Buttons -->
+    <div class="flex justify-between items-center">
+      <a href="/posts" class="text-blue-400 hover:underline">← Back to All Posts</a>
+      <a href="/posts/<%= post.id %>/edit" class="text-yellow-400 hover:underline">✏️ Edit Post</a>
+    </div>
+  </div>
+</body>
+</html>

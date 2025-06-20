@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Your Wallpaper</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center font-sans text-gray-200 p-6">
+  <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg p-6 w-full max-w-md">
+
+    <h2 class="text-2xl font-bold text-center mb-4">Edit Post</h2>
+
+    <p class="text-sm text-gray-400 mb-2">Post ID: <%= post.id %></p>
+    <p class="text-lg font-semibold mb-4">@<%= post.username %></p>
+    <form action="/posts/<%= post.id %>?_method=PATCH" method="POST" enctype="multipart/form-data" class="space-y-5">
+      
+      <!-- Current Image -->
+      <div>
+        <label class="block text-sm font-medium mb-1">Current Image:</label>
+        <img src="<%= post.image %>" alt="Current Post Image" class="w-full rounded mb-2" />
+      </div>
+
+      <!-- Updating the image -->
+      <div>
+        <label for="image" class="block text-sm font-medium mb-1">Change Image:</label>
+        <input type="file" name="image" id="image" accept="image/*" class="text-gray-300" />
+      </div>
+
+      <!-- CAption Editing -->
+      <div>
+        <label for="caption" class="block text-sm font-medium mb-1">Edit Caption:</label>
+        <textarea name="caption" id="caption" rows="4"
+          class="w-full px-3 py-2 border border-white border-opacity-30 rounded-md bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        ><%= post.caption %></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">Update Post</button>
+    </form>
+
+    <a href="/posts/<%= post.id %>" class="block text-center mt-4 text-blue-400 hover:underline text-sm">← Back to Post</a>
+  </div>
+</body>
+</html>
